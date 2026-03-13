@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+## -------------------------- TUTOR CLONE BUAT ANAK ANAK ITD MOB FT 26 -------------------------- ##
+1. Buat folder / directory di manapun 
+2. Masuk ke folder tersebut 
+3. Buka terminal di folder tersebut 
+4. Ketik "git clone https://github.com/Beyolandr7/MOBFT26-WebUtama.git"
+5. Masuk ke folder projectnya
+6. Ketik "npm install" di terminal dan jalankan 
+7. Ketik "npm run dev" di terminal dan jalankan 
+8. Langsung buka http://localhost:3000 di browser kesayangan kalian
