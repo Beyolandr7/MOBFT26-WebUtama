@@ -1,0 +1,1450 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "5",
+  "dialect": "mysql",
+  "tables": {
+    "assignments": {
+      "name": "assignments",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "assignment_submissions": {
+      "name": "assignment_submissions",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "assignment_id": {
+          "autoincrement": false,
+          "name": "assignment_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "participant_id": {
+          "autoincrement": false,
+          "name": "participant_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "graded_by_user_id": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "graded_by_user_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "score": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "score",
+          "type": "int(11)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notes": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "assignment_submissions_assignment_id_fkey": {
+          "name": "assignment_submissions_assignment_id_fkey",
+          "tableFrom": "assignment_submissions",
+          "tableTo": "assignments",
+          "columnsFrom": [
+            "assignment_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "assignment_submissions_graded_by_user_id_fkey": {
+          "name": "assignment_submissions_graded_by_user_id_fkey",
+          "tableFrom": "assignment_submissions",
+          "tableTo": "users",
+          "columnsFrom": [
+            "graded_by_user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "cascade"
+        },
+        "assignment_submissions_participant_id_fkey": {
+          "name": "assignment_submissions_participant_id_fkey",
+          "tableFrom": "assignment_submissions",
+          "tableTo": "participants",
+          "columnsFrom": [
+            "participant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "attendances": {
+      "name": "attendances",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "participant_id": {
+          "autoincrement": false,
+          "name": "participant_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "attendance_session_id": {
+          "autoincrement": false,
+          "name": "attendance_session_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "recorded_by_user_id": {
+          "autoincrement": false,
+          "name": "recorded_by_user_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "default": "'''present'''",
+          "autoincrement": false,
+          "name": "status",
+          "type": "enum('present','excused','absent')",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "notes": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "attendances_attendance_session_id_fkey": {
+          "name": "attendances_attendance_session_id_fkey",
+          "tableFrom": "attendances",
+          "tableTo": "attendance_sessions",
+          "columnsFrom": [
+            "attendance_session_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "attendances_participant_id_fkey": {
+          "name": "attendances_participant_id_fkey",
+          "tableFrom": "attendances",
+          "tableTo": "participants",
+          "columnsFrom": [
+            "participant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "attendances_recorded_by_user_id_fkey": {
+          "name": "attendances_recorded_by_user_id_fkey",
+          "tableFrom": "attendances",
+          "tableTo": "users",
+          "columnsFrom": [
+            "recorded_by_user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {
+        "attendances_participant_id_attendance_session_id_key": {
+          "name": "attendances_participant_id_attendance_session_id_key",
+          "columns": [
+            "participant_id",
+            "attendance_session_id"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "attendance_sessions": {
+      "name": "attendance_sessions",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "group_type_id": {
+          "autoincrement": false,
+          "name": "group_type_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date": {
+          "autoincrement": false,
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_time": {
+          "autoincrement": false,
+          "name": "start_time",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_time": {
+          "autoincrement": false,
+          "name": "end_time",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "attendance_sessions_group_type_id_fkey": {
+          "name": "attendance_sessions_group_type_id_fkey",
+          "tableFrom": "attendance_sessions",
+          "tableTo": "group_types",
+          "columnsFrom": [
+            "group_type_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "game_credentials": {
+      "name": "game_credentials",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "participant_id": {
+          "autoincrement": false,
+          "name": "participant_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password_et": {
+          "autoincrement": false,
+          "name": "password_et",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "game_credentials_participant_id_fkey": {
+          "name": "game_credentials_participant_id_fkey",
+          "tableFrom": "game_credentials",
+          "tableTo": "participants",
+          "columnsFrom": [
+            "participant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "groups": {
+      "name": "groups",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "group_type_id": {
+          "autoincrement": false,
+          "name": "group_type_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "groups_group_type_id_fkey": {
+          "name": "groups_group_type_id_fkey",
+          "tableFrom": "groups",
+          "tableTo": "group_types",
+          "columnsFrom": [
+            "group_type_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "group_types": {
+      "name": "group_types",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {
+        "group_types_name_key": {
+          "name": "group_types_name_key",
+          "columns": [
+            "name"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "participants": {
+      "name": "participants",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "autoincrement": false,
+          "name": "user_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "instagram": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "instagram",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "asal_sekolah": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "asal_sekolah",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "major": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "major",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notelp": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "notelp",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "idline": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "idline",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kampus": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "kampus",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "participants_user_id_fkey": {
+          "name": "participants_user_id_fkey",
+          "tableFrom": "participants",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {
+        "participants_user_id_key": {
+          "name": "participants_user_id_key",
+          "columns": [
+            "user_id"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "password_changes": {
+      "name": "password_changes",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "autoincrement": false,
+          "name": "user_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "changed_at": {
+          "default": "'current_timestamp()'",
+          "autoincrement": false,
+          "name": "changed_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "password_changes_user_id_fkey": {
+          "name": "password_changes_user_id_fkey",
+          "tableFrom": "password_changes",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {
+        "password_changes_user_id_key": {
+          "name": "password_changes_user_id_key",
+          "columns": [
+            "user_id"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "permissions": {
+      "name": "permissions",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "guard_name": {
+          "default": "'''web'''",
+          "autoincrement": false,
+          "name": "guard_name",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {
+        "permissions_name_key": {
+          "name": "permissions_name_key",
+          "columns": [
+            "name"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "roles": {
+      "name": "roles",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "guard_name": {
+          "default": "'''web'''",
+          "autoincrement": false,
+          "name": "guard_name",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {
+        "roles_name_key": {
+          "name": "roles_name_key",
+          "columns": [
+            "name"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "users": {
+      "name": "users",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "autoincrement": false,
+          "name": "email",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "username": {
+          "autoincrement": false,
+          "name": "username",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email_verified_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "email_verified_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "autoincrement": false,
+          "name": "password",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "remember_token": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "remember_token",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {
+        "users_email_key": {
+          "name": "users_email_key",
+          "columns": [
+            "email"
+          ]
+        },
+        "users_username_key": {
+          "name": "users_username_key",
+          "columns": [
+            "username"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "violations": {
+      "name": "violations",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "participant_id": {
+          "autoincrement": false,
+          "name": "participant_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "violation_type_id": {
+          "autoincrement": false,
+          "name": "violation_type_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "recorded_by_user_id": {
+          "autoincrement": false,
+          "name": "recorded_by_user_id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "notes": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "committed_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "committed_at",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_by": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_by",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "violations_created_by_fkey": {
+          "name": "violations_created_by_fkey",
+          "tableFrom": "violations",
+          "tableTo": "users",
+          "columnsFrom": [
+            "created_by"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "cascade"
+        },
+        "violations_participant_id_fkey": {
+          "name": "violations_participant_id_fkey",
+          "tableFrom": "violations",
+          "tableTo": "participants",
+          "columnsFrom": [
+            "participant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "violations_recorded_by_user_id_fkey": {
+          "name": "violations_recorded_by_user_id_fkey",
+          "tableFrom": "violations",
+          "tableTo": "users",
+          "columnsFrom": [
+            "recorded_by_user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "violations_violation_type_id_fkey": {
+          "name": "violations_violation_type_id_fkey",
+          "tableFrom": "violations",
+          "tableTo": "violation_types",
+          "columnsFrom": [
+            "violation_type_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "violation_types": {
+      "name": "violation_types",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "autoincrement": false,
+          "name": "name",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "autoincrement": false,
+          "name": "type",
+          "type": "enum('ringan','sedang','berat')",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "deleted_at": {
+          "default": "'NULL'",
+          "autoincrement": false,
+          "name": "deleted_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "_groupparticipant": {
+      "name": "_groupparticipant",
+      "columns": {
+        "A": {
+          "autoincrement": false,
+          "name": "A",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "B": {
+          "autoincrement": false,
+          "name": "B",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "_GroupParticipant_B_index": {
+          "name": "_GroupParticipant_B_index",
+          "columns": [
+            "B"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "_GroupParticipant_A_fkey": {
+          "name": "_GroupParticipant_A_fkey",
+          "tableFrom": "_groupparticipant",
+          "tableTo": "groups",
+          "columnsFrom": [
+            "A"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "_GroupParticipant_B_fkey": {
+          "name": "_GroupParticipant_B_fkey",
+          "tableFrom": "_groupparticipant",
+          "tableTo": "participants",
+          "columnsFrom": [
+            "B"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {
+        "_GroupParticipant_AB_unique": {
+          "name": "_GroupParticipant_AB_unique",
+          "columns": [
+            "A",
+            "B"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "_groupuser": {
+      "name": "_groupuser",
+      "columns": {
+        "A": {
+          "autoincrement": false,
+          "name": "A",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "B": {
+          "autoincrement": false,
+          "name": "B",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "_GroupUser_B_index": {
+          "name": "_GroupUser_B_index",
+          "columns": [
+            "B"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "_GroupUser_A_fkey": {
+          "name": "_GroupUser_A_fkey",
+          "tableFrom": "_groupuser",
+          "tableTo": "groups",
+          "columnsFrom": [
+            "A"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "_GroupUser_B_fkey": {
+          "name": "_GroupUser_B_fkey",
+          "tableFrom": "_groupuser",
+          "tableTo": "users",
+          "columnsFrom": [
+            "B"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {
+        "_GroupUser_AB_unique": {
+          "name": "_GroupUser_AB_unique",
+          "columns": [
+            "A",
+            "B"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "_rolepermissions": {
+      "name": "_rolepermissions",
+      "columns": {
+        "A": {
+          "autoincrement": false,
+          "name": "A",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "B": {
+          "autoincrement": false,
+          "name": "B",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "_RolePermissions_B_index": {
+          "name": "_RolePermissions_B_index",
+          "columns": [
+            "B"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "_RolePermissions_A_fkey": {
+          "name": "_RolePermissions_A_fkey",
+          "tableFrom": "_rolepermissions",
+          "tableTo": "permissions",
+          "columnsFrom": [
+            "A"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "_RolePermissions_B_fkey": {
+          "name": "_RolePermissions_B_fkey",
+          "tableFrom": "_rolepermissions",
+          "tableTo": "roles",
+          "columnsFrom": [
+            "B"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {
+        "_RolePermissions_AB_unique": {
+          "name": "_RolePermissions_AB_unique",
+          "columns": [
+            "A",
+            "B"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "_userroles": {
+      "name": "_userroles",
+      "columns": {
+        "A": {
+          "autoincrement": false,
+          "name": "A",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "B": {
+          "autoincrement": false,
+          "name": "B",
+          "type": "bigint(20)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "_UserRoles_B_index": {
+          "name": "_UserRoles_B_index",
+          "columns": [
+            "B"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "_UserRoles_A_fkey": {
+          "name": "_UserRoles_A_fkey",
+          "tableFrom": "_userroles",
+          "tableTo": "roles",
+          "columnsFrom": [
+            "A"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "_UserRoles_B_fkey": {
+          "name": "_UserRoles_B_fkey",
+          "tableFrom": "_userroles",
+          "tableTo": "users",
+          "columnsFrom": [
+            "B"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {
+        "_UserRoles_AB_unique": {
+          "name": "_UserRoles_AB_unique",
+          "columns": [
+            "A",
+            "B"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    }
+  },
+  "views": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "tables": {},
+    "indexes": {}
+  }
+}
