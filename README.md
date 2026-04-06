@@ -1,47 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MOB FT 2026 - Web Utama
 
-## Getting Started
+Professional main portal and API Gateway for the **Masa Orientasi Bersama (MOB) FT 2026** at Universitas Surabaya.
 
-First, run the development server:
+## 📌 Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Web Utama** serves as the central hub and proxy gateway for the entire MOB FT 2026 digital ecosystem. It utilizes **Next.js Multi-Zones** to seamlessly route traffic to various sub-applications while maintaining a unified user experience and shared authentication state.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Core Responsibilities
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Proxy Gateway**: Orchestrates traffic between the main dashboard and sub-apps (Web Baju, Web ET, etc.).
+- **Central Authentication**: Manages global SSO via shared Top-Level Domain (TLD) cookies.
+- **Resource Hub**: Centralizes registration, announcements, and university event tracking.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tech Stack & Tooling
 
-To learn more about Next.js, take a look at the following resources:
+| Category      | Technology                                                  |
+| :------------ | :---------------------------------------------------------- |
+| **Framework** | Next.js 16 (App Router + Turbopack)                         |
+| **Styling**   | Tailwind CSS v4 + DaisyUI Components                        |
+| **Database**  | MySQL                                                       |
+| **ORM**       | Drizzle ORM                                                 |
+| **Auth**      | NextAuth.js (Session synchronization via `.ubayamobft.com`) |
+| **Quality**   | ESLint, Prettier, TypeScript (Strict)                       |
+| **Workflow**  | Husky, Lint-Staged, Commitlint (Conventional Commits)       |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Getting Started
 
-## Deploy on Vercel
+### Prerequisites
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Node.js**: >= 20.x
+- **Package Manager**: npm
+- **Database**: MySQL Server (Local or Dockerized)
+- **Editor**: VS Code (Recommended Extensions: Tailwind CSS IntelliSense, Prettier, ESLint)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Installation
 
+1. **Clone the repository:**
 
-## -------------------------- TUTOR CLONE BUAT ANAK ANAK ITD MOB FT 26 -------------------------- ##
-1. Buat folder / directory di manapun 
-2. Masuk ke folder tersebut 
-3. Buka terminal di folder tersebut 
-4. Ketik "git clone https://github.com/Beyolandr7/MOBFT26-WebUtama.git"
-5. Masuk ke folder projectnya
-6. Ketik "npm install" di terminal dan jalankan 
-7. Ketik "npm run dev" di terminal dan jalankan 
-8. Langsung buka http://localhost:3000 di browser kesayangan kalian
+   ```bash
+   git clone https://github.com/Beyolandr7/MOBFT26-WebUtama.git
+   cd MOBFT26-WebUtama
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup:**
+   Copy the example environment file and configure your local variables:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Modify `.env` and provide valid values for:
+   - `DATABASE_URL`
+   - `NEXTAUTH_SECRET` (Generate using `openssl rand -base64 32`)
+
+4. **Initialize Husky Hooks:**
+
+   ```bash
+   npm run prepare
+   ```
+
+5. **Run Development Server:**
+   ```bash
+   npm run dev
+   ```
+   The portal will be available at [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 📜 Available Scripts
+
+- `npm run dev`: Starts the development server with Hot Module Replacement.
+- `npm run build`: Generates the production build.
+- `npm run start`: Starts the production server.
+- `npm run typecheck`: Performs full static type checking with TypeScript.
+- `npm run db:seed`: Seeds the database with student data from CSV.
+- `npm run lint`: Analyzes the codebase for potential errors and styling issues.
+
+---
+
+## 🏗️ Development Workflow
+
+### Conventions
+
+- **Language**: Source code and comments are in **English**. UI content is in **Bahasa Indonesia**.
+- **Naming**:
+  - `camelCase`: Functions, variables, and hooks.
+  - `PascalCase`: React components and Types.
+  - `kebab-case`: File and directory names.
+
+### Git Strategy
+
+- **Branches**: `feat/*`, `fix/*`, `chore/*`, `refactor/*`.
+- **Commits**: Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
+  - _Example_: `feat: add student registration form` or `fix: resolve auth cookie mismatch`.
+- **Pre-commit**: The system automatically runs `npm run typecheck`, Prettier, and ESLint on staged files.
+
+---
+
+## 📚 References & Documentation
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS v4](https://tailwindcss.com/blog/tailwindcss-v4-alpha)
+- [DaisyUI Components](https://daisyui.com/components/)
+- [Drizzle ORM](https://orm.drizzle.team/docs/overview)
+- [NextAuth.js](https://next-auth.js.org/getting-started/introduction)
+
+---
+
+Developed with ❤️ by **KOORWA ITD MOB FT 2026**.

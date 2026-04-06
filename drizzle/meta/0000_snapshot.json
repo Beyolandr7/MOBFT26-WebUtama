@@ -140,12 +140,8 @@
           "name": "assignment_submissions_assignment_id_fkey",
           "tableFrom": "assignment_submissions",
           "tableTo": "assignments",
-          "columnsFrom": [
-            "assignment_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["assignment_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -153,12 +149,8 @@
           "name": "assignment_submissions_graded_by_user_id_fkey",
           "tableFrom": "assignment_submissions",
           "tableTo": "users",
-          "columnsFrom": [
-            "graded_by_user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["graded_by_user_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "cascade"
         },
@@ -166,12 +158,8 @@
           "name": "assignment_submissions_participant_id_fkey",
           "tableFrom": "assignment_submissions",
           "tableTo": "participants",
-          "columnsFrom": [
-            "participant_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["participant_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -250,12 +238,8 @@
           "name": "attendances_attendance_session_id_fkey",
           "tableFrom": "attendances",
           "tableTo": "attendance_sessions",
-          "columnsFrom": [
-            "attendance_session_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["attendance_session_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -263,12 +247,8 @@
           "name": "attendances_participant_id_fkey",
           "tableFrom": "attendances",
           "tableTo": "participants",
-          "columnsFrom": [
-            "participant_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["participant_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -276,12 +256,8 @@
           "name": "attendances_recorded_by_user_id_fkey",
           "tableFrom": "attendances",
           "tableTo": "users",
-          "columnsFrom": [
-            "recorded_by_user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["recorded_by_user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -289,10 +265,7 @@
       "uniqueConstraints": {
         "attendances_participant_id_attendance_session_id_key": {
           "name": "attendances_participant_id_attendance_session_id_key",
-          "columns": [
-            "participant_id",
-            "attendance_session_id"
-          ]
+          "columns": ["participant_id", "attendance_session_id"]
         }
       },
       "checkConstraint": {}
@@ -374,12 +347,8 @@
           "name": "attendance_sessions_group_type_id_fkey",
           "tableFrom": "attendance_sessions",
           "tableTo": "group_types",
-          "columnsFrom": [
-            "group_type_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["group_type_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -443,12 +412,8 @@
           "name": "game_credentials_participant_id_fkey",
           "tableFrom": "game_credentials",
           "tableTo": "participants",
-          "columnsFrom": [
-            "participant_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["participant_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -512,12 +477,8 @@
           "name": "groups_group_type_id_fkey",
           "tableFrom": "groups",
           "tableTo": "group_types",
-          "columnsFrom": [
-            "group_type_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["group_type_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -573,9 +534,7 @@
       "uniqueConstraints": {
         "group_types_name_key": {
           "name": "group_types_name_key",
-          "columns": [
-            "name"
-          ]
+          "columns": ["name"]
         }
       },
       "checkConstraint": {}
@@ -677,12 +636,8 @@
           "name": "participants_user_id_fkey",
           "tableFrom": "participants",
           "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -690,9 +645,7 @@
       "uniqueConstraints": {
         "participants_user_id_key": {
           "name": "participants_user_id_key",
-          "columns": [
-            "user_id"
-          ]
+          "columns": ["user_id"]
         }
       },
       "checkConstraint": {}
@@ -746,12 +699,8 @@
           "name": "password_changes_user_id_fkey",
           "tableFrom": "password_changes",
           "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -759,9 +708,7 @@
       "uniqueConstraints": {
         "password_changes_user_id_key": {
           "name": "password_changes_user_id_key",
-          "columns": [
-            "user_id"
-          ]
+          "columns": ["user_id"]
         }
       },
       "checkConstraint": {}
@@ -814,9 +761,7 @@
       "uniqueConstraints": {
         "permissions_name_key": {
           "name": "permissions_name_key",
-          "columns": [
-            "name"
-          ]
+          "columns": ["name"]
         }
       },
       "checkConstraint": {}
@@ -869,9 +814,7 @@
       "uniqueConstraints": {
         "roles_name_key": {
           "name": "roles_name_key",
-          "columns": [
-            "name"
-          ]
+          "columns": ["name"]
         }
       },
       "checkConstraint": {}
@@ -961,15 +904,11 @@
       "uniqueConstraints": {
         "users_email_key": {
           "name": "users_email_key",
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         },
         "users_username_key": {
           "name": "users_username_key",
-          "columns": [
-            "username"
-          ]
+          "columns": ["username"]
         }
       },
       "checkConstraint": {}
@@ -1061,12 +1000,8 @@
           "name": "violations_created_by_fkey",
           "tableFrom": "violations",
           "tableTo": "users",
-          "columnsFrom": [
-            "created_by"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["created_by"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "cascade"
         },
@@ -1074,12 +1009,8 @@
           "name": "violations_participant_id_fkey",
           "tableFrom": "violations",
           "tableTo": "participants",
-          "columnsFrom": [
-            "participant_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["participant_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1087,12 +1018,8 @@
           "name": "violations_recorded_by_user_id_fkey",
           "tableFrom": "violations",
           "tableTo": "users",
-          "columnsFrom": [
-            "recorded_by_user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["recorded_by_user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1100,12 +1027,8 @@
           "name": "violations_violation_type_id_fkey",
           "tableFrom": "violations",
           "tableTo": "violation_types",
-          "columnsFrom": [
-            "violation_type_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["violation_type_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1190,9 +1113,7 @@
       "indexes": {
         "_GroupParticipant_B_index": {
           "name": "_GroupParticipant_B_index",
-          "columns": [
-            "B"
-          ],
+          "columns": ["B"],
           "isUnique": false
         }
       },
@@ -1201,12 +1122,8 @@
           "name": "_GroupParticipant_A_fkey",
           "tableFrom": "_groupparticipant",
           "tableTo": "groups",
-          "columnsFrom": [
-            "A"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["A"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1214,12 +1131,8 @@
           "name": "_GroupParticipant_B_fkey",
           "tableFrom": "_groupparticipant",
           "tableTo": "participants",
-          "columnsFrom": [
-            "B"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["B"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1227,10 +1140,7 @@
       "uniqueConstraints": {
         "_GroupParticipant_AB_unique": {
           "name": "_GroupParticipant_AB_unique",
-          "columns": [
-            "A",
-            "B"
-          ]
+          "columns": ["A", "B"]
         }
       },
       "checkConstraint": {}
@@ -1257,9 +1167,7 @@
       "indexes": {
         "_GroupUser_B_index": {
           "name": "_GroupUser_B_index",
-          "columns": [
-            "B"
-          ],
+          "columns": ["B"],
           "isUnique": false
         }
       },
@@ -1268,12 +1176,8 @@
           "name": "_GroupUser_A_fkey",
           "tableFrom": "_groupuser",
           "tableTo": "groups",
-          "columnsFrom": [
-            "A"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["A"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1281,12 +1185,8 @@
           "name": "_GroupUser_B_fkey",
           "tableFrom": "_groupuser",
           "tableTo": "users",
-          "columnsFrom": [
-            "B"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["B"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1294,10 +1194,7 @@
       "uniqueConstraints": {
         "_GroupUser_AB_unique": {
           "name": "_GroupUser_AB_unique",
-          "columns": [
-            "A",
-            "B"
-          ]
+          "columns": ["A", "B"]
         }
       },
       "checkConstraint": {}
@@ -1324,9 +1221,7 @@
       "indexes": {
         "_RolePermissions_B_index": {
           "name": "_RolePermissions_B_index",
-          "columns": [
-            "B"
-          ],
+          "columns": ["B"],
           "isUnique": false
         }
       },
@@ -1335,12 +1230,8 @@
           "name": "_RolePermissions_A_fkey",
           "tableFrom": "_rolepermissions",
           "tableTo": "permissions",
-          "columnsFrom": [
-            "A"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["A"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1348,12 +1239,8 @@
           "name": "_RolePermissions_B_fkey",
           "tableFrom": "_rolepermissions",
           "tableTo": "roles",
-          "columnsFrom": [
-            "B"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["B"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1361,10 +1248,7 @@
       "uniqueConstraints": {
         "_RolePermissions_AB_unique": {
           "name": "_RolePermissions_AB_unique",
-          "columns": [
-            "A",
-            "B"
-          ]
+          "columns": ["A", "B"]
         }
       },
       "checkConstraint": {}
@@ -1391,9 +1275,7 @@
       "indexes": {
         "_UserRoles_B_index": {
           "name": "_UserRoles_B_index",
-          "columns": [
-            "B"
-          ],
+          "columns": ["B"],
           "isUnique": false
         }
       },
@@ -1402,12 +1284,8 @@
           "name": "_UserRoles_A_fkey",
           "tableFrom": "_userroles",
           "tableTo": "roles",
-          "columnsFrom": [
-            "A"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["A"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1415,12 +1293,8 @@
           "name": "_UserRoles_B_fkey",
           "tableFrom": "_userroles",
           "tableTo": "users",
-          "columnsFrom": [
-            "B"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["B"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1428,10 +1302,7 @@
       "uniqueConstraints": {
         "_UserRoles_AB_unique": {
           "name": "_UserRoles_AB_unique",
-          "columns": [
-            "A",
-            "B"
-          ]
+          "columns": ["A", "B"]
         }
       },
       "checkConstraint": {}

@@ -45,9 +45,17 @@ export const authOptions: NextAuthOptions = {
         const { identifier, password } = parsed.data;
 
         // Find user by email or username (NRP)
-        let userRecord = await db.select().from(users).where(eq(users.email, identifier)).limit(1);
+        let userRecord = await db
+          .select()
+          .from(users)
+          .where(eq(users.email, identifier))
+          .limit(1);
         if (userRecord.length === 0) {
-          userRecord = await db.select().from(users).where(eq(users.username, identifier)).limit(1);
+          userRecord = await db
+            .select()
+            .from(users)
+            .where(eq(users.username, identifier))
+            .limit(1);
         }
 
         if (userRecord.length === 0) {
