@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 /**
  * DashboardPage reads searchParams to check for ?error=unauthorized
  * In Next.js 16+, searchParams is a Promise and must be awaited.
@@ -11,6 +9,11 @@ export default async function DashboardPage({
 }) {
   const params = await searchParams;
   const showUnauthorizedToast = params.error === "unauthorized";
+
+  // Use absolute URLs for subdomain-based navigation
+  const pesanBajuUrl =
+    process.env.PESAN_BAJU_URL || "https://pembelian.ubayamobft.com";
+  const etUrl = process.env.ET_URL || "https://et.ubayamobft.com";
 
   return (
     <main className="min-h-screen bg-base-200">
@@ -32,12 +35,13 @@ export default async function DashboardPage({
               Selamat datang di portal Masa Orientasi Bersama (MOB) FT 2026.
             </p>
             <div className="flex gap-4 justify-center">
-              <Link href="/pembelian-baju" className="btn btn-primary">
+              {/* Using absolute URLs for subdomain-based routing */}
+              <a href={pesanBajuUrl} className="btn btn-primary">
                 Beli Baju
-              </Link>
-              <Link href="/engineering-tour" className="btn btn-secondary">
+              </a>
+              <a href={etUrl} className="btn btn-secondary">
                 Kuis ET
-              </Link>
+              </a>
             </div>
           </div>
         </div>

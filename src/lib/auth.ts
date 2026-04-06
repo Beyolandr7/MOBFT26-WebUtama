@@ -109,7 +109,7 @@ export const authOptions: NextAuthOptions = {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        domain: ".ubayamobft.com",
+        domain: process.env.COOKIE_DOMAIN || ".ubayamobft.com",
         secure: process.env.NODE_ENV === "production",
       },
     },
