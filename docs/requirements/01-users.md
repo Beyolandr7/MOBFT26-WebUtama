@@ -144,5 +144,5 @@ This table contains the extended profile information for Maharu. It is strictly 
 - Login page (NRP & Password).
 - Dashboard (Welcome page with role-based widgets).
 - Logged-in profile settings page.
-- **Middleware Protection:** `src/middleware.ts` should check route patterns against `token.permissions`. If a user tries to access `/admin/violations`, the middleware should verify `token.permissions.includes('page_ViolationRecording')`.
+- **Middleware Protection:** `src/proxy.ts` should check route patterns against `token.permissions`. If a user tries to access `/admin/violations`, the middleware should verify `token.permissions.includes('page_ViolationRecording')`.
 - **Component Hiding:** Use the session permissions array to conditionally render UI elements. Example: `<Button disabled={!session.permissions.includes('delete_violation')}>Delete</Button>`.
