@@ -12,18 +12,18 @@ Roles are granted specific permissions via the `_rolepermissions` bridging table
 
 The system contains 12 specific roles (divisions) stored in the `roles` table:
 
-1. `super_admin`: Full god-mode access.
-2. `itd` (Information Technology Division): Full god-mode access, system maintenance.
-3. `bph` (Badan Pengurus Harian): Read-only global access, reporting, and statistics.
-4. `hrd` (Human Resource Development): Committee management and performance tracking.
-5. `ad` (Acara Division): Attendance session and schedule management.
-6. `sfd koorwa` (Security Lead): Full violation master management, override capabilities.
-7. `sfd` (Frontline Security): Recording student violations.
-8. `ed` (Engineering Tour): Game progression monitoring and assignment grading.
-9. `maping` (Facilitator): Group specific access, student lookup within their group, and daily attendance recording.
-10. `te` (Teknis & Perlengkapan): General committee access.
-11. `ddd` (Pubdok): General committee access.
-12. `maharu` (Mahasiswa Baru): Participant/Student role. Limited access to their own data.
+1. `super_admin` (ID 1): Full god-mode access.
+2. `bph` (ID 2, Badan Pengurus Harian): Read-only global access, reporting, and statistics.
+3. `itd` (ID 3, Information Technology Department): Full god-mode access, system maintenance.
+4. `ad` (ID 4, Administration Department): Attendance session and schedule management.
+5. `sfd` (ID 5, Security Force Department): Recording student violations.
+6. `ed` (ID 6, Event Director): Game progression monitoring and assignment grading.
+7. `maping` (ID 7, Mahasiswa Pendamping): Group specific access, student lookup within their group, and daily attendance recording.
+8. `maharu` (ID 8, Mahasiswa Baru): Participant/Student role. Limited access to their own data.
+9. `te` (ID 9, Technical Equipment): General committee access.
+10. `hrd` (ID 10, Health Resource Department): Committee management and performance tracking.
+11. `ddd` (ID 11, Design and Documentation Department): General committee access.
+12. `sfd koorwa` (ID 22, Security Force Department Coordinator): Full violation master management, override capabilities.
 
 ### Permission Categories
 
