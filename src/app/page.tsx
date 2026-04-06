@@ -2,15 +2,15 @@ import Link from "next/link";
 
 /**
  * DashboardPage reads searchParams to check for ?error=unauthorized
- * which is appended by the middleware when a non-panitia user 
- * tries to access restricted routes.
+ * In Next.js 16+, searchParams is a Promise and must be awaited.
  */
-export default function DashboardPage({
+export default async function DashboardPage({
   searchParams,
 }: {
-  searchParams: { error?: string };
+  searchParams: Promise<{ error?: string }>;
 }) {
-  const showUnauthorizedToast = (searchParams as any).error === "unauthorized";
+  const params = await searchParams;
+  const showUnauthorizedToast = params.error === "unauthorized";
 
   return (
     <main className="min-h-screen bg-base-200">

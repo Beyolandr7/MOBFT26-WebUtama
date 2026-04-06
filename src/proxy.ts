@@ -23,8 +23,8 @@ export default async function proxy(request: NextRequest) {
   }
 
   // 2. Protect all routes: If not logged in, redirect to /login
-  // (Access to /login itself is handled by the matcher exclusion or explicit check)
-  if (!token && pathname !== "/login") {
+  // Allow root (/) to be public as per user request
+  if (!token && pathname !== "/login" && pathname !== "/") {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
