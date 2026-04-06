@@ -35,7 +35,7 @@ Professional main portal and API Gateway for the **Masa Orientasi Bersama (MOB) 
 - **Node.js**: >= 20.x
 - **Package Manager**: npm
 - **Database**: MySQL Server (Local or Dockerized)
-- **Editor**: VS Code (Recommended Extensions: Tailwind CSS IntelliSense, Prettier, ESLint)
+- **Editor**: VS Code, Antigravity (Recommended Extensions: Tailwind CSS IntelliSense, Prettier, ESLint) or an IDE of your choice
 
 ### Installation
 
