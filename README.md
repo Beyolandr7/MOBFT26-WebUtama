@@ -8,9 +8,9 @@ Professional main portal and API Gateway for the **Masa Orientasi Bersama (MOB) 
 
 ### Core Responsibilities
 
-- **Proxy Gateway**: Orchestrates traffic between the main dashboard and sub-apps (Web Baju, Web ET, etc.).
+- **Proxy Gateway**: Orchestrates traffic between the main dashboard and sub-apps for Mahasiswa (Web Baju, Web ET, etc.).
 - **Central Authentication**: Manages global SSO via shared Top-Level Domain (TLD) cookies.
-- **Resource Hub**: Centralizes registration, announcements, and university event tracking.
+- **Resource Hub**: Centralizes Attendances, Penalty Tracking, and all Information regarding MOB FT 2026 for both Mahasiswa and Panitia.
 
 ---
 
