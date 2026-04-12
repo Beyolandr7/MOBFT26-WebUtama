@@ -32,7 +32,7 @@ export default async function DashboardPage({
           <div className="max-w-md">
             <h1 className="text-5xl font-bold">Halo, Mahasiswa Baru!</h1>
             <p className="py-6 text-lg">
-              Selamat datang di portal Masa Orientasi Bersama (MOB) FT 2026.
+              Selamat datang di Masa Orientasi Bersama (MOB) FT 2026.
             </p>
             <div className="flex gap-4 justify-center">
               {/* Using absolute URLs for subdomain-based routing */}
