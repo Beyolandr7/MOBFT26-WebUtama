@@ -117,4 +117,4 @@ Professional main portal and API Gateway for the **Masa Orientasi Bersama (MOB) 
 
 ---
 
-Developed with ❤️ by **KOORWA ITD MOB FT 2026**.
+Developed with 🤎 by **KOORWA ITD MOB FT 2026**.
