@@ -1,9 +1,15 @@
-import { NextAuthOptions, User } from "next-auth";
+import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { db } from "../db";
-import { users } from "../db/schema";
+import {
+  users,
+  userroles,
+  roles,
+  rolepermissions,
+  permissions,
+} from "../db/schema";
 import { eq } from "drizzle-orm";
 
 const loginSchema = z.object({
@@ -16,6 +22,7 @@ declare module "next-auth" {
     user: {
       id: string;
       role: string;
+      permissions: string[];
       name?: string | null;
       email?: string | null;
       image?: string | null;
@@ -24,7 +31,48 @@ declare module "next-auth" {
   interface User {
     id: string;
     role: string;
+    permissions: string[];
   }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    id: string;
+    role: string;
+    permissions: string[];
+  }
+}
+
+/**
+ * Fetches the role name and permission names for a given user ID.
+ * Joins: _userroles → roles → _rolepermissions → permissions
+ */
+async function fetchUserRoleAndPermissions(userId: number) {
+  // Get the user's role via _userroles → roles
+  const userRoleRows = await db
+    .select({ roleName: roles.name, roleId: roles.id })
+    .from(userroles)
+    .innerJoin(roles, eq(userroles.a, roles.id))
+    .where(eq(userroles.b, userId))
+    .limit(1);
+
+  if (userRoleRows.length === 0) {
+    return { role: "user", permissions: [] as string[] };
+  }
+
+  const userRole = userRoleRows[0];
+
+  // Get the permissions for this role via _rolepermissions → permissions
+  const permissionRows = await db
+    .select({ permissionName: permissions.name })
+    .from(rolepermissions)
+    .innerJoin(permissions, eq(rolepermissions.a, permissions.id))
+    .where(eq(rolepermissions.b, userRole.roleId));
+
+  return {
+    role: userRole.roleName,
+    permissions: permissionRows.map((row) => row.permissionName),
+  };
 }
 
 export const authOptions: NextAuthOptions = {
@@ -75,43 +123,37 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        // Return user with mocked role for demonstration since schema doesn't have a direct user_roles junction yet.
-        // In a real app, you'd join with the roles table.
+        // Fetch role and permissions from the database
+        const { role, permissions } = await fetchUserRoleAndPermissions(
+          user.id
+        );
+
         return {
           id: user.id.toString(),
           name: user.name,
           email: user.email,
-          role: "user", // To be replaced with actual DB lookup if needed
-        } as User;
+          role,
+          permissions,
+        };
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = user.role;
         token.id = user.id;
+        token.role = user.role;
+        token.permissions = user.permissions;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.role = token.role as string;
-        session.user.id = token.id as string;
+        session.user.id = token.id;
+        session.user.role = token.role;
+        session.user.permissions = token.permissions;
       }
       return session;
-    },
-  },
-  cookies: {
-    sessionToken: {
-      name: `next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        domain: process.env.COOKIE_DOMAIN || ".ubayamobft.com",
-        secure: process.env.NODE_ENV === "production",
-      },
     },
   },
   pages: {
