@@ -22,7 +22,7 @@ Professional main portal and API Gateway for the **Masa Orientasi Bersama (MOB) 
 | **Styling**   | Tailwind CSS v4 + DaisyUI Components                        |
 | **Database**  | MySQL                                                       |
 | **ORM**       | Drizzle ORM                                                 |
-| **Auth**      | NextAuth.js (Session synchronization via `.ubayamobft.com`) |
+| **Auth**      | NextAuth.js                                                 |
 | **Quality**   | ESLint, Prettier, TypeScript (Strict)                       |
 | **Workflow**  | Husky, Lint-Staged, Commitlint (Conventional Commits)       |
 
@@ -117,4 +117,4 @@ Professional main portal and API Gateway for the **Masa Orientasi Bersama (MOB) 
 
 ---
 
-Developed with ❤️ by **KOORWA ITD MOB FT 2026**.
+Developed with 🤎 by **KOORWA ITD MOB FT 2026**.
